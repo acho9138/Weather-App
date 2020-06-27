@@ -1,0 +1,14 @@
+.sidebar {
+    background-color: #f9fafb;
+    margin-top: 3px;
+}
+
+#forcast {
+    margin-left: 10px;
+}
+
+.uvIndex {
+    padding: 6px;
+    color: white;
+    border-radius: 3px;
+}
