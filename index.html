@@ -5,12 +5,79 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script defer src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script defer src="script.js"></script>
     <title>Weather Time</title>
 </head>
 <body>
+    <!-- Nav bar -->
+    <nav>
+        <div class="nav-wrapper">
+            <h4 class="brand-logo center">Weather Dashboard</h4>
+        </div>
+    </nav>
     
+    <!-- Main content -->
+    <div class="row">
+        <!-- Side bar -->
+        <div class="col s12 m5 l4 sidebar">
+            <!-- Search city form -->
+            <form class="col s12">
+                <h5>Search the city</h5>
+                <div class="input-field col s10">
+                    <input id="city" type="text" class="validate">
+                    <label for="city">City</label>
+                </div>
+                <div class="input-field col s1">
+                    <button class="btn waves-effect waves-light" type="submit" name="action">
+                        <i class="material-icons">search</i>
+                    </button>
+                </div>
+            </form>
+
+            <!-- Searched city history -->
+            <div class="displayCities">
+                <!-- collections -->
+            </div>
+        </div>
+        
+        <!-- Main weather detail display -->
+        <div class="col s12 m7 l8">
+            <div class="card-panel currentWeather">
+                <h4 class="cityName">City (Date)</h4>
+                <br>
+                <p>Temperature: <span class="temperature"></span></p>
+                <p>Humidity: <span class="humidity"></span></p>
+                <p>Wind Speed: <span class="windSpeed"></span></p>
+                <p>UV Index: <span class="uvIndex"></span></p>
+            </div>
+            <div class="row">
+                <h5 id="forcast">5-Day Forcast</h5>
+                <div class="col s12 m2">
+                    <div class="card-panel teal">
+                    </div>
+                </div>
+                <div class="col s12 m2">
+                    <div class="card-panel teal">
+                    </div>
+                </div>
+                <div class="col s12 m2">
+                    <div class="card-panel teal">
+                    </div>
+                </div>
+                <div class="col s12 m2">
+                    <div class="card-panel teal">
+                    </div>
+                </div>
+                <div class="col s12 m2">
+                    <div class="card-panel teal">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
 </body>
 </html>
