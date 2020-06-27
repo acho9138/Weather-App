@@ -36,7 +36,16 @@ $.ajax({
     url: uvURL,
     method: "GET",
   }).then(function (response) {
-    uvIndex.text(response.value);
+    const uv = response.value
+    uvIndex.text(uv);
+
+    if (uv <= 2) {
+      uvIndex.addClass("light-green accent-3");
+    } else if (uv >= 8) {
+      uvIndex.addClass("red accent-3");
+    } else {
+      uvIndex.addClass("amber accent-3");
+    }
   });
 });
 
