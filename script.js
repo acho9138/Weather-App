@@ -10,15 +10,6 @@ const cityList = $(".searchedCityList");
 
 const apiKey = "17eb3367ba18dce2a0f91e80d65b735b";
 
-$("button").on("click", function (event) {
-  const city = $("#city").val();
-  const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
-  event.preventDefault();
-  renderCurrentWeather(queryURL);
-  addCityArray();
-  renderCityList();
-});
-
 // Call current weather details and render in the main div
 function renderCurrentWeather (queryURL) {
   $.ajax({
@@ -47,13 +38,13 @@ function renderCurrentWeather (queryURL) {
       // Colour code UV index according to value
       if (uv <= 2) {
         uvIndex.addClass("light-green accent-3");
-        uvIndex.removeClass("red accent-3 amber accent-3")
+        uvIndex.removeClass("red accent-3 amber accent-3");
       } if (uv >= 8) {
         uvIndex.addClass("red accent-3");
-        uvIndex.removeClass("light-green accent-3 amber accent-3")
+        uvIndex.removeClass("light-green accent-3 amber accent-3");
       } else {
         uvIndex.addClass("amber accent-3");
-        uvIndex.removeClass("light-green accent-3 red accent-3")
+        uvIndex.removeClass("light-green accent-3 red accent-3");
       }
       renderForecastWeather(latitude, longitude);
     });
@@ -72,9 +63,9 @@ function renderForecastWeather (latitude, longitude) {
     // Create new card for each day
     for (const currentWeather of forecastArray) {
       let newDiv = $("<div>");
-      newDiv.addClass("col s12 m6 l2");
+      newDiv.addClass("col s12 forecastDiv");
       let newCard = $("<div>");
-      newCard.addClass("card-panel teal forecast");
+      newCard.addClass("card-panel teal forecastDay");
       // Add weather details to each card
       let forecastDate = moment.unix(currentWeather.dt).format("L");
       let forecastIcon = currentWeather.weather[0].icon;
@@ -88,21 +79,45 @@ function renderForecastWeather (latitude, longitude) {
   });
 }
 
-let cityArray = [];
-
+// Store array with searched cities in local storage
 function addCityArray() {
+  let cityArray = [];
+  const currentCityArray = JSON.parse(localStorage.getItem('cities'))
+  if(currentCityArray) cityArray = cityArray.concat(currentCityArray);
   const inputCity = $("#city").val().trim();
   cityArray.push(inputCity);
   $("#city").val('');
+  localStorage.setItem('cities', JSON.stringify(cityArray));
 }
 
+// Render searched cities as a list
 function renderCityList() {
   cityList.text('');
-  for (let searchedCity of cityArray) {
-    const newLi = $("<li>");
-    newLi.addClass("collection-item");
-    searchedCity = searchedCity.charAt(0).toUpperCase() + searchedCity.substr(1).toLowerCase();
-    newLi.text(searchedCity);
-    cityList.append(newLi);
+  let cities = JSON.parse(localStorage.getItem('cities'));
+  if (cities) {
+    for (let searchedCity of cities) {
+      const newLi = $("<li>");
+      newLi.addClass("collection-item waves-effect waves-teal searchedCity");
+      searchedCity = searchedCity.charAt(0).toUpperCase() + searchedCity.substr(1).toLowerCase();
+      newLi.text(searchedCity);
+      cityList.append(newLi);
+    }
   }
 }
+
+renderCityList();
+$("button").on("click", function (event) {
+  event.preventDefault();
+  const city = $("#city").val();
+  const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  renderCurrentWeather(queryURL);
+  addCityArray();
+  renderCityList();
+});
+
+$(document).on("click", "li", function (event) {
+  const city = $(this).text();
+  const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  renderCurrentWeather(queryURL);
+  renderCityList();
+})
