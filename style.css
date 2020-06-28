@@ -3,7 +3,7 @@
     margin-top: 3px;
 }
 
-#forcast {
+#forecast {
     margin-left: 10px;
 }
 
@@ -11,4 +11,12 @@
     padding: 6px;
     color: white;
     border-radius: 3px;
+}
+
+.forecast {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 5px;
+    color: white;
 }
