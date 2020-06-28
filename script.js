@@ -47,10 +47,13 @@ function renderCurrentWeather (queryURL) {
       // Colour code UV index according to value
       if (uv <= 2) {
         uvIndex.addClass("light-green accent-3");
-      } else if (uv >= 8) {
+        uvIndex.removeClass("red accent-3 amber accent-3")
+      } if (uv >= 8) {
         uvIndex.addClass("red accent-3");
+        uvIndex.removeClass("light-green accent-3 amber accent-3")
       } else {
         uvIndex.addClass("amber accent-3");
+        uvIndex.removeClass("light-green accent-3 red accent-3")
       }
       renderForecastWeather(latitude, longitude);
     });
