@@ -85,9 +85,11 @@ function addCityArray() {
   const currentCityArray = JSON.parse(localStorage.getItem('cities'))
   if(currentCityArray) cityArray = cityArray.concat(currentCityArray);
   const inputCity = $("#city").val().trim();
-  cityArray.push(inputCity);
   $("#city").val('');
-  localStorage.setItem('cities', JSON.stringify(cityArray));
+  if (!cityArray.includes(inputCity)) {
+    cityArray.push(inputCity);
+    localStorage.setItem('cities', JSON.stringify(cityArray));
+  }
 }
 
 // Render searched cities as a list
