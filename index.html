@@ -23,7 +23,7 @@
     <!-- Main content -->
     <div class="row">
         <!-- Side bar -->
-        <div class="col s12 m5 l3 sidebar">
+        <div class="col s12 m4 l4 sidebar">
             <!-- Search city form -->
             <form class="col s12">
                 <h5>Search the city</h5>
@@ -39,24 +39,24 @@
             </form>
 
             <!-- Searched city history -->
-            <div class="displayCities">
-                <!-- collections -->
+            <div>
+                <ul class="collection searchedCityList"></ul>
             </div>
         </div>
         
         <!-- Main weather detail display -->
-        <div class="col s12 m7 l9">
+        <div class="col s12 m8 l8">
             <div class="card-panel currentWeather">
-                <h4><span class="cityName"></span>  <span class="date"></span> <img src="" alt="icon for today's weather" id="todayWeatherIcon"></h4>
+                <h4><span class="cityName"></span>  <span class="date"></span> <span id="todayWeatherIcon"></span></h4>
                 <br>
-                <p>Temperature: <span class="temperature"></span><sup>o</sup>F</p>
-                <p>Humidity: <span class="humidity"></span>%</p>
-                <p>Wind Speed: <span class="windSpeed"></span>MPH</p>
+                <p>Temperature: <span class="temperature"></span></p>
+                <p>Humidity: <span class="humidity"></span></p>
+                <p>Wind Speed: <span class="windSpeed"></span></p>
                 <p>UV Index: <span class="uvIndex"></span></p>
             </div>
             <div class="row">
                 <h5 id="forecast">5-Day Forecast</h5>
-                <div class="forecastCard"></div>
+                <div class="row forecastCard"></div>
             </div>
         </div>
 
