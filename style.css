@@ -1,28 +1,44 @@
 .sidebar {
-    background-color: #f9fafb;
-    margin-top: 3px;
+  background-color: #f9fafb;
+  margin-top: 3px;
 }
 
-#forecast {
-    margin-left: 10px;
+.searchedCity {
+  width: 100%;
+  display: block;
 }
 
 .uvIndex {
-    padding: 6px;
-    color: white;
-    border-radius: 3px;
+  padding: 6px;
+  color: white;
+  border-radius: 3px;
 }
 
-.forecast {
-    display: flex;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    padding: 5px;
-    color: white;
+#forecast {
+  margin-left: 30px;
+  padding-top: 20px;
+}
+
+.forecastCard {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.forecastDay {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  color: white;
 }
 
 @media (min-width: 600px) {
-    .sidebar {
-        height: 100vh;
-    }
+  .sidebar {
+    height: 100vh;
+  }
+}
+
+@media (min-width: 600px) {
+  .forecastDiv {
+    width: 20% !important;
+  }
 }
