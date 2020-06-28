@@ -1,6 +1,7 @@
 .sidebar {
     background-color: #f9fafb;
     margin-top: 3px;
+    height: 100vh;
 }
 
 #forecast {
