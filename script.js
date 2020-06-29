@@ -21,7 +21,7 @@ function renderCurrentWeather (queryURL) {
     currentDateDisplay.text(date);
     // Display weather details on main div
     currentCityDisplay.text(response.name);
-    weatherIcon.html(`<img src="http://openweathermap.org/img/w/${response.weather[0].icon}.png" alt="weather icon">`);
+    weatherIcon.html(`<img src="https://openweathermap.org/img/w/${response.weather[0].icon}.png" alt="weather icon">`);
     temperature.html(`${response.main.temp}<sup>o</sup>F`);
     humidity.html(`${response.main.humidity}%`);
     windSpeed.html(`${response.wind.speed}MPH`);
@@ -70,7 +70,7 @@ function renderForecastWeather (latitude, longitude) {
       let forecastDate = moment.unix(currentWeather.dt).format("L");
       let forecastIcon = currentWeather.weather[0].icon;
       newCard.html(`<h6>${forecastDate}</h6>`);
-      newCard.append(`<img src="http://openweathermap.org/img/w/${forecastIcon}.png" alt="weather icon">`);
+      newCard.append(`<img src="https://openweathermap.org/img/w/${forecastIcon}.png" alt="weather icon">`);
       newCard.append(`<p>Temp: ${currentWeather.temp.day}<sup>o</sup>F</p>`);
       newCard.append(`<p>Humidity: ${currentWeather.humidity}%</p>`);
       newDiv.append(newCard);
@@ -111,7 +111,7 @@ renderCityList();
 $("button").on("click", function (event) {
   event.preventDefault();
   const city = $("#city").val();
-  const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
   renderCurrentWeather(queryURL);
   addCityArray();
   renderCityList();
@@ -119,7 +119,7 @@ $("button").on("click", function (event) {
 
 $(document).on("click", "li", function (event) {
   const city = $(this).text();
-  const queryURL = `http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
+  const queryURL = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}`;
   renderCurrentWeather(queryURL);
   renderCityList();
 })
