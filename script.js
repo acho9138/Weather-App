@@ -63,7 +63,7 @@ function renderForecastWeather (latitude, longitude) {
     // Create new card for each day
     for (const currentWeather of forecastArray) {
       let newDiv = $("<div>");
-      newDiv.addClass("col s12 forecastDiv");
+      newDiv.addClass("col s12 m6 forecastDiv");
       let newCard = $("<div>");
       newCard.addClass("card-panel teal forecastDay");
       // Add weather details to each card
